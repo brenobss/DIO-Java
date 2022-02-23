@@ -23,13 +23,19 @@ public class Dev {
     }
     
     public void progredir() {
-	Optional<Conteudo> conteudo = this.conteudosInscristos.stream().findFirst();
-	if(conteudo.isPresent()) {
+	
+	try {
+	    Optional<Conteudo> conteudo = this.conteudosInscristos.stream().findFirst();
 	    this.conteudosConcluidos.add(conteudo.get());
 	    this.conteudosInscristos.remove(conteudo.get());
-	} else {
-	    System.err.println("Você não está matriculado em nenhum conteúdo!");
+	    System.out.println(nome + " concluiu o conteúdo " + conteudo.get());
+	    if(!this.conteudosInscristos.stream().findAny().isPresent()) {
+		System.out.println(nome + " concluiu o bootcamp!");
+	    }
+	} catch (RuntimeException e) {
+	    new DevException(nome + " não está matriculado(a) em nenhum conteúdo!");
 	}
+	
     }
     
     public double calcularXPTotal() {
@@ -83,7 +89,7 @@ public class Dev {
 
     @Override
     public String toString() {
-	return "Dev [nome=" + nome + ", conteudosInscristos=" + conteudosInscristos + ", conteudosConcluidos="
+	return "Dev " + nome + ", conteudosInscristos=" + conteudosInscristos + ", conteudosConcluidos="
 		+ conteudosConcluidos + ", XPTotal=" + calcularXPTotal() + "]";
     }
     

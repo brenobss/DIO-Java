@@ -24,6 +24,9 @@ public class Main {
 	bootcampJava.getConteudos().add(cursoJava);
 	bootcampJava.getConteudos().add(mentoriaJava);
 	
+	Bootcamp bootcampPHP = new Bootcamp("PHP", "Bootcamp PHP developer");
+	bootcampPHP.getConteudos().add(cursoPHP);
+	
 	Dev devPaulo = new Dev("Paulo");
 	
 	devPaulo.inscreverBootcamp(bootcampJava);
@@ -31,6 +34,13 @@ public class Main {
 	devPaulo.progredir();
 	
 	System.out.println(devPaulo);
+	
+	Dev devMarcia = new Dev("Marcia");
+	devMarcia.inscreverBootcamp(bootcampPHP);
+	devMarcia.progredir();
+	devMarcia.progredir();
+	
+	System.out.println(devMarcia);
     }
 
 }
