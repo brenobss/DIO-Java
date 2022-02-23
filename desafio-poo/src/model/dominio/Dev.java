@@ -20,6 +20,7 @@ public class Dev {
     public void inscreverBootcamp(Bootcamp bootcamp) {
 	this.conteudosInscristos.addAll(bootcamp.getConteudos());
 	bootcamp.getDevsInscritos().add(this);
+	System.out.println(nome + " se inscreveu no " + bootcamp.getDescricao());
     }
     
     public void progredir() {
